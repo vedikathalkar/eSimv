@@ -65,7 +65,7 @@ function installDependency
   
     # Specific dependency for canberra-gtk modules
     echo "Installing Gtk Canberra modules..........................."
-    sudo apt install -y libcanberra-gtk-module libcanberra-gtk3-module
+    sudo apt install -y libcanberra-gtk3-module
 
     # Specific dependency for nvidia graphic cards
     echo "Installing graphics dependency for Ngspice source build"
@@ -74,6 +74,7 @@ function installDependency
 
     echo "Installing libxaw7-dev...................................."
     sudo apt install -y libxaw7-dev
+
 
     echo "Installing dependencies for $verilator...................."
     if [[ -n "$(which apt 2> /dev/null)" ]]
@@ -95,6 +96,7 @@ function installGHDL
 
     echo "Installing $ghdl LLVM................................."
     tar xvf $ghdl.tar.gz
+    python3 ~/eSim-2.5/fix_llvm.py
     echo "$ghdl successfully extracted"
     echo "Changing directory to $ghdl installation"
     cd $ghdl/
@@ -151,6 +153,7 @@ function installVerilator
 
 function installNGHDL
 {
+
     echo "Installing NGHDL........................................"
 
     # Extracting NGHDL to Home Directory
